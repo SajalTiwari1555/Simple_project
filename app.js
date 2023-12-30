@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const Listing = require("./models/listing.js")
 const path = require("path");
 const methodOverride = require("method-override");
+const ejsMate = require("ejs-mate");  
 main()
 .then(()=> {
  console.log("Connected to DB");
@@ -17,7 +18,7 @@ async function main(){
     await mongoose.connect("mongodb://127.0.0.1:27017/wanderlust")
 }
 
-// app.get("/testListing",a sync (req,res)=>{
+// app.get("/testListing",async(req,res) => {
 //    let sampleListing = new Listing({
 //     title:"My New Villa",
 //     discription:"By the Beach",
@@ -25,7 +26,8 @@ async function main(){
 //     location:"Calangute ,Goa",
 //     Country:"India",
 //    });
-//   await sampleListing.save();
+//   await sampleListing.save();       // sampleListing is saved to databases 
+
 //    console.log("Sample was Saved");
 //    res.send("Successful testing");
 // });
@@ -45,6 +47,8 @@ app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"views"));
 app.use(express.urlencoded({extended:true}));
 app.use(methodOverride("_method"));
+app.engine("ejs",ejsMate);
+app.use(express.static(path.join(__dirname,"/public")));
 //Index route
 
 app.get("/listings",async (req,res) => {
@@ -63,9 +67,9 @@ app.post("/listings", async (req,res)  => {
     // let {title,description,image,price,country,location} = req.body;
     // let listing = req.body.listing;
   const newListing =  new Listing(req.body.listing);   // to prints documents in collections
-   await newListing.save();
+   await newListing.save();    //to save in databases
      console.log(newListing);
-     res.redirect("/listings");
+     res.redirect("/listings");   //page redirect 
 });
 
 //Edit Route
