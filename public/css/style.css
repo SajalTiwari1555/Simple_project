@@ -68,7 +68,7 @@ color: #222222;
 .card-body{
     padding: 0 !important;
 }
-.card-text{
+.card-text p{
  font-weight: 400;
 }
 .listing-link{
@@ -86,7 +86,26 @@ color: #222222;
 
 }
   /* New page */
-.add-btn{
+.edit-btn{
     background-color: #fe424d !important;
     border: none !important;
+}
+
+/* Edit page */
+.new-btn {
+    background-color: #fe424d !important;
+    border: none !important;
+}
+
+/* show page  */
+.show-img{
+    height: 33vh;
+}
+
+.btns {
+    display: flex;
+}
+.show-card{
+    padding-left:0 ;
+    padding-right:0;
 }

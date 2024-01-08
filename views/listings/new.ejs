@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WanderLust</title>
-</head>
-<body>
-    <h2> Create New List</h2>
-    <br>
+<% layout("/layouts/boilerplate") %>
+<div class="row">
+  <div class="col-8 offset-2">
+    <h2> Create New List</h2>           
     <form method="POST" action="/listings">
-      <div >
+      <div class="mb-3 mt-3" >
         <label for="title" class="form-label" >Title</label>
         <input name="listing[title]" placeholder="enter title"  class="form-control" />
       </div>
@@ -37,8 +31,7 @@
       <input name="listing[location]" placeholder="enter location" class="form-control"/>
     </div>
     
-    <br><br>
-    <button class="btn btn-dark">Add</button>
+    <button class="btn btn-dark mt-3 new-btn">Add</button>
   </form>
-</body>
-</html>
+</div>
+</div>
